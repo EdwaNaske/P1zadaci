@@ -1,10 +1,7 @@
-﻿#include <iostream>
-using namespace std;
-//Napisati program koji omogućuje korisniku unos jedne od 4 numeričke opcije :
+﻿//Napisati program koji omogućuje korisniku unos jedne od 4 numeričke opcije :
 //1 - Odabir ove opcije primorava korisnika na unos dvije cjelobrojne vrijednosti m i n,
 // pri čemu mora biti ispoštovano ograničenje(0 < m < n).Program treba ispisati sve proste brojeve u intervalu[m, n],
 // čije su cifre sortirane uzlaznim redoslijedom.
-// 
 //	2 - Odabir ove opcije primorava korisnika na unos jedne cjelobrojne vrijednosti n, za koju važi ograničenje n≥10.
 // Program treba da ispiše sve brojeve u intervalu[10, n] za koje važi da su prva i zadnja cifra u broju iste.
 //	3 - Odabir ove opcije primorava korisnika na unos jedne cjelobrojne vrijednosti n, za koju važi ograničenje 200.
@@ -13,6 +10,8 @@ using namespace std;
 //	Ukoliko korisnik odabere opciju koja nije niti jedna od 4 navedene,
 // potrebno je ispisati poruku za nevalidan unos i nastaviti sa izvršenjem programa
 // (tj.ponovo prikazati menu sa svim opcijama)
+#include <iostream>
+using namespace std;
 bool IsProst(int);
 bool IsUzlazan(int);
 bool PrvaZadnja(int);
@@ -42,11 +41,12 @@ int main() {
 			pronadjen = false;
 			cout << "Prosti brojevi uzlazni: " << endl;
 			for (int i = m; i <= n; i++) {
-				if (IsProst(i) && IsUzlazan(i))
+				if (IsProst(i) && IsUzlazan(i)){
 					cout << i << " ";
 				pronadjen = true;
+				}
 			}
-			if (!pronadjen) cout << "U ovom obsegu nema takvih brojeva!";
+			if (pronadjen==false) cout << "U ovom obsegu nema takvih brojeva!";
 			cout << endl << endl;
 		}break;
 			//********************************************************************************************
@@ -59,13 +59,9 @@ int main() {
 				if (n < 10) cout << "Niste ispostavali uvijet! Pokusajte ponovo." << endl;
 			} while (n < 10);
 			cout << "Brojevi sa istom prvom i zadnjom cifrom su:" << endl;
-			pronadjen = false;
 			for (int i = 10; i <= n; i++) {
 				if (PrvaZadnja(i)) cout << i << " ";
-				pronadjen = true;
-			}
-			if (!pronadjen) cout << "U ovom obsegu nema takvih brojeva!";
-			
+			}	
 			cout << endl << endl;
 		}break;
 		//********************************************************************************************
@@ -81,11 +77,11 @@ int main() {
 			for (int i = 10; i <= n; i++) {
 				if (IsteCifre(i)) cout << i << ' ';
 			}
+			cout << endl << endl;
 		}	break;
 		//********************************************************************************************
 		case 4: {
 			cout << "Kraj programa!" << endl;
-
 			break;
 		default:
 			cout << "Nepostojeca opcija! Pokusajte ponovo." << endl << endl;
